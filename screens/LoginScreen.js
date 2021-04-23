@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Button, Input } from "react-native-elements";
+import { Button, Input, Image } from "react-native-elements";
 import { StatusBar } from "expo-status-bar";
-// import KeyboardAvoidingView from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -11,15 +11,8 @@ const LoginScreen = ({ navigation }) => {
   const signIn = () => {};
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" enabled style={styles.container}>
       <StatusBar style="light" />
-      {/* <Image
-        source={{
-          uri:
-            "https://www.citypng.com/public/uploads/preview/-51610315041aoqdl6x1m3.png",
-        }}
-        style={{ width: 200, height: 200 }}
-      /> */}
       <View
         style={{
           display: "flex",
@@ -27,7 +20,7 @@ const LoginScreen = ({ navigation }) => {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: "70px", color: "#00bfff" }}>Signal</Text>
+        <Text style={styles.logo}>Signal</Text>
       </View>
       <View style={styles.inputContainer}>
         <Input
@@ -56,7 +49,7 @@ const LoginScreen = ({ navigation }) => {
         onPress={() => navigation.navigate("Register")}
         containerStyle={styles.button}
       ></Button>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -72,4 +65,5 @@ const styles = StyleSheet.create({
   },
   inputContainer: { marginTop: 30, width: 300 },
   button: { width: 200, marginTop: 20 },
+  logo: { fontSize: 50, color: "#34b4eb" },
 });
