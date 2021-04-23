@@ -3,12 +3,44 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button, Input, Image } from "react-native-elements";
 import { StatusBar } from "expo-status-bar";
 import { KeyboardAvoidingView } from "react-native";
+import { showMessage, hideMessage } from "react-native-flash-message";
+import axios from "axios";
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const signIn = () => {};
+  const signIn = async () => {
+    navigation.navigate("Home");
+    // try {
+    //   const res = await axios.post("http://localhost:5555/users/login", {
+    //     username,
+    //     password,
+    //   });
+    //   if (res.data.status === "ok") {
+    //     navigation.navigate("Home");
+    //   }
+
+    //   console.log(res.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // fetch("http://localhost:5555/users/login", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     password,
+    //   })
+    //     .then((response) => response.json())
+    //     .then((responseJson) => {
+    //       return responseJson.movies;
+    //     }),
+    // });
+  };
 
   return (
     <KeyboardAvoidingView behavior="padding" enabled style={styles.container}>
@@ -24,11 +56,11 @@ const LoginScreen = ({ navigation }) => {
       </View>
       <View style={styles.inputContainer}>
         <Input
-          placeholder="Email"
+          placeholder="Username"
           autoFocus
-          type="email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+          type="username"
+          value={username}
+          onChangeText={(text) => setUsername(text)}
         />
         <Input
           placeholder="Password"
